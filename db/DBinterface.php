@@ -59,6 +59,39 @@ class DBinterface {
     }
     return false;
   }
+  
+  public function doesExistKG($kg_id) {
+    $q = "SELECT * FROM kg WHERE id=?";
+    $stmt = $this -> db -> prepare($q);
+    $result = $stmt -> execute(array($kg_id));
+    if ($result and $row = $stmt -> fetch()) {
+      if ($row)
+        return true;
+    }
+    return false;
+  }
+  
+  public function doesExistClass($class_id) {
+    $q = "SELECT * FROM classes WHERE id=?";
+    $stmt = $this -> db -> prepare($q);
+    $result = $stmt -> execute(array($class_id));
+    if ($result and $row = $stmt -> fetch()) {
+      if ($row)
+        return true;
+    }
+    return false;
+  }
+  
+  public function doesExistGrade($grade_id) {
+    $q = "SELECT * FROM grades WHERE id=?";
+    $stmt = $this -> db -> prepare($q);
+    $result = $stmt -> execute(array($grade_id));
+    if ($result and $row = $stmt -> fetch()) {
+      if ($row)
+        return true;
+    }
+    return false;
+  }
 
   public function checkPasswd($entry_id, $password) {
     $q = "SELECT password FROM entries WHERE id=?";
@@ -94,7 +127,7 @@ class DBinterface {
     }
 
     // validate kg_id
-    if (!preg_match("/\A[0-9]+\z/", $kg_id)) {
+    if (!preg_match("/\A[0-9]+\z/", $kg_id) or !$this -> doesExistKG($kg_id)) {
       throw new Exception("Invalid ID for KG.{$back}");
     }
 
@@ -104,12 +137,12 @@ class DBinterface {
     }
 
     // validate class_id
-    if (!preg_match("/\A[0-9]+\z/", $class_id)) {
+    if (!preg_match("/\A[0-9]+\z/", $class_id) or !$this -> doesExistClass($class_id)) {
       throw new Exception("Invalid ID for classification.{$back}");
     }
 
     // validate grade_id
-    if (!preg_match("/\A[0-9]+\z/", $grade_id)) {
+    if (!preg_match("/\A[0-9]+\z/", $grade_id) or !$this -> doesExistGrade($grade_id)) {
       throw new Exception("Invalid ID for grade.{$back}");
     }
 
@@ -155,7 +188,7 @@ class DBinterface {
 
     if ($this -> checkPasswd($entry_id, $password)) {
       // validate kg_id
-      if (!preg_match("/\A[0-9]+\z/", $kg_id)) {
+      if (!preg_match("/\A[0-9]+\z/", $kg_id) or !$this -> doesExistKG($kg_id)) {
         throw new Exception("Invalid ID for KG.{$back}");
       } else if ($former["kg_id"] !== $kg_id) {
         $updates["kg_id"] = $kg_id;
@@ -169,14 +202,14 @@ class DBinterface {
       }
 
       // validate class_id
-      if (!preg_match("/\A[0-9]+\z/", $class_id)) {
+      if (!preg_match("/\A[0-9]+\z/", $class_id) or !$this -> doesExistClass($class_id)) {
         throw new Exception("Invalid ID for classification.{$back}");
       } else if ($former["class_id"] !== $class_id) {
         $updates["class_id"] = $class_id;
       }
 
       // validate grade_id
-      if (!preg_match("/\A[0-9]+\z/", $grade_id)) {
+      if (!preg_match("/\A[0-9]+\z/", $grade_id) or !$this -> doesExistGrade($grade_id)) {
         throw new Exception("Invalid ID for grade.{$back}");
       } else if ($former["grade_id"] !== $grade_id) {
         $updates["grade_id"] = $grade_id;
