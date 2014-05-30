@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12px;
+  color: #333333;
+}
+
+/*
+ * Common styles
+ */
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/*
+ * Specific styles
+ */
+div#wrap {
+  width: 900px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+div#main {
+  clear: both;
+}
+
+nav#top_bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #C4E9E0;
+}
+
+nav#top_bar ul {
+  margin-left: 300px;
+}
+
+nav#top_bar ul li {
+  float: left;
+  margin-right: 2px;
+}
+
+nav#top_bar ul li a {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div#login {
+  float: right;
+  margin-right: 300px;
+  width: 260px;
+  height: 30px;
+}
+
+div#login span, div#login a {
+  float: left;
+  padding-left: 8px;
+  height: 30px;
+  line-height: 30px;
+}
+
+div#login span#name {
+  font-weight: bold;
+}
+
+div#login a {
+  text-decoration: underline;
+}
+
+div#login form {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 135px;
+  width: 270px;
+  height: 20px;
+}
+
+div#login input[type=text], div#login input[type=password] {
+  width: 80px;
+}
+
+div#login input[type=submit] {
+  width: 50px;
+  height: 20px;
+  border: solid 2px #FFFFFF;
+  background-color: #C4E9E0;
+}
+
+div#login input[type=submit]:hover {
+  background-color: #77DDD1;
+}
+
+div#nav {
+  float: left;
+}
+
+div#nav {
+  margin-top: 20px;
+}
+
+header nav {
+  width: 600px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+header nav ul li {
+  float: left;
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  width: 100px;
+  font-size: 16px;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+div.content {
+  clear: both;
+}
+
+ul#rule {
+  display: block;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+ul#rule li {
+  list-style-type: square;
+  color: #77DDD1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+span.rule_item {
+  color: #333333;
+  font-size: 14px;
+}
+
+table#presenters {
+  width: 900px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  border-collapse: collapse;
+}
+
+table#presenters * th {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+table#presenters tbody tr:nth-child(odd) {
+  background-color: #C4E9E0;
+}
+
+table#presenters tbody tr td {
+  padding: 5px;
+  text-align: center;
+}
+
+table#presenters tbody tr td:nth-child(1) {
+  width: 30px;
+  font-weight: bold;
+}
+
+table#presenters tbody tr td:nth-child(2) {
+  width: 50px;
+}
+
+table#presenters tbody tr td:nth-child(3) {
+  width: 70px;
+}
+
+table#presenters tbody tr td:nth-child(4) {
+  width: 150px;
+}
+
+table#presenters tbody tr td:nth-child(5) {
+  width: 30px;
+}
+
+table#presenters tbody tr td:nth-child(6) {
+  width: 400px;
+}
+
+table#presenters tbody tr td:nth-child(7) {
+  width: 30px;
+}
+
+table#presenters tbody tr td:nth-child(8) {
+  width: 80px;
+}
+
+table#presenters tbody tr td a:hover {
+  text-decoration: underline;
+}
+
+form#register label {
+  display: block;
+  width: 400px;
+  margin-top: 20px;
+}
+
+form#register label.check {
+  margin-top: 0;
+  margin-left: 100px;
+}
+
+form#register label span {
+  display: inline-block;
+  width: 100px;
+}
+
+form#register input[type=text], form#register input[type=password] {
+  width: 260px;
+}
+
+form#register input[type=submit] {
+  margin-left: 60px;
+  margin-top: 20px;
+}
+
+form#register textarea {
+  resize: none;
+  width: 600px;
+  height: 100px;
+}
+
+form#signup {
+  margin-top: 20px;
+}
+
+form#signup label {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+form#signup label span {
+  display: inline-block;
+  width: 100px;
+}
+
+div#main.mypage table thead tr th, div#main.mypage table tbody tr td {
+  border-collapse: collapse;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div.comment {
+  border: solid 2px #77DDD1;
+  padding: 10px;
+  width: 600px;
+  margin: 20px;
+  margin-left: 0;
+}
+
+div.comment span.name {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+div.comment span.pf {
+  font-size: 16px;
+  display: block;
+  padding-left: 10px;
+}
+
+div.comment p.comment {
+  border-top: dashed 1px #77DDD1;
+  border-bottom: dashed 1px #77DDD1;
+  margin: 10px;
+  padding: 10px;
+  padding-left: 0;
+  font-size: 16px;
+}
+
+div.comment span.time {
+  font-size: 16px;
+  display: block;
+  width: 600px;
+  text-align: right;
+}

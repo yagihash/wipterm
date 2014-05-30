@@ -1,0 +1,17 @@
+php_value upload_max_filesize "20M"
+
+<Files ~ "\.db$">
+  deny from all
+</Files>
+<Files ~ "\.sql">
+  deny from all
+</Files>
+
+# AuthUserFile /wipterm/.htpasswd
+# AuthGroupFile /dev/null
+# Authname "RG standard"
+# AuthType Basic
+# require valid-user
+# <Files ~ "^.(htpasswd|htaccess)$">
+#   deny from all
+# </Files>
