@@ -2,3 +2,5 @@
 reset.sh
 gen.py
 database.db
+files/slides/*.pdf
+files/handouts/*.pdf
