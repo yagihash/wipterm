@@ -7,9 +7,9 @@ $db = new DBinterface("./database.db");
 <html lang="ja">
 
   <head>
-    <?php
+<?php
     require_once ("head.php");
-    ?>
+?>
   </head>
 
   <body>

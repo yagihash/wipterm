@@ -9,9 +9,9 @@ $entry = $db -> fetchEntry($_GET["id"]);
 <html lang="ja">
 
   <head>
-    <?php
+<?php
     require_once ("head.php");
-    ?>
+?>
   </head>
 
   <body>
