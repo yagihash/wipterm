@@ -21,7 +21,7 @@ $db = new DBinterface("./database.db");
       require_once (__DIR__ . "/page_header.php");
       ?>
       <div id="main" class="content">
-        <form id="register" method="POST" action="register_post.php" enctype="multipart/form-data">
+        <form class="register" method="POST" action="register_post.php" enctype="multipart/form-data">
           <input type="hidden" name="token" value="<?=escapeHTML($_SESSION["token"]) ?>" />
           <label><span>種別:</span>
             <select name="class_id" required>

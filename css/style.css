@@ -224,32 +224,36 @@ table#presenters tbody tr td a:hover {
   text-decoration: underline;
 }
 
-form#register label {
+form.register {
+  margin-bottom: 20px;
+}
+
+form.register label {
   display: block;
   width: 400px;
   margin-top: 20px;
 }
 
-form#register label.check {
+form.register label.check {
   margin-top: 0;
   margin-left: 100px;
 }
 
-form#register label span {
+form.register label span {
   display: inline-block;
   width: 100px;
 }
 
-form#register input[type=text], form#register input[type=password] {
+form.register input[type=text], form.register input[type=password] {
   width: 260px;
 }
 
-form#register input[type=submit] {
+form.register input[type=submit] {
   margin-left: 60px;
   margin-top: 20px;
 }
 
-form#register textarea {
+form.register textarea {
   resize: none;
   width: 600px;
   height: 100px;

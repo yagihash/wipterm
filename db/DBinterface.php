@@ -20,7 +20,7 @@ class DBinterface {
   }
 
   public function fetchAllEntries() {
-    $q = "SELECT * FROM entries";
+    $q = "SELECT * FROM entries ORDER BY class_id DESC";
     $stmt = $this -> db -> prepare($q);
     $result = $stmt -> execute();
     if ($result)
@@ -205,11 +205,11 @@ class DBinterface {
     }
   }
 
-  public function deleteEntry($entry_id, $password) {
+  public function deleteEntry($entry_id, $password, $admin=false) {
     $back = "<script src='./js/back.js'></script>";
     $entry = $this -> fetchEntry($entry_id);
 
-    if ($this -> checkPasswd($entry_id, $password)) {
+    if ($admin or $this -> checkPasswd($entry_id, $password)) {
       $q = "DELETE FROM entries WHERE id=?";
       $stmt = $this -> db -> prepare($q);
       $result = $stmt -> execute(array($entry_id));

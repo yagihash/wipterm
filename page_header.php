@@ -12,6 +12,9 @@
               <li>
                 <a href="./register.php">Register</a>
               </li>
+              <li>
+                <a href="./admin.php">Admin</a>
+              </li>
             </ul>
           </nav>
         </div>

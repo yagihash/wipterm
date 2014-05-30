@@ -19,7 +19,8 @@ $entry = $db -> fetchEntry($_GET["id"]);
     <div id="wrap">
 <?php require_once(__DIR__ ."/page_header.php"); ?>
       <div id="main" class="content">
-        <form id="register" method="POST" action="edit_post.php" enctype="multipart/form-data">
+        <h2>編集ページ</h2>
+        <form class="register" method="POST" action="edit_post.php" enctype="multipart/form-data">
           <input type="hidden" name="token" value="<?=escapeHTML($_SESSION["token"]) ?>" />
           <input type="hidden" name="id" value="<?=escapeHTML($entry["id"]) ?>" />
           <label><span>種別:</span>
