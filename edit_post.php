@@ -9,9 +9,19 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
   die("403 Forbidden");
 }
 
-if($_POST["token"] !== $_SESSION["token"]) {
+if ($_POST["token"] !== $_SESSION["token"]) {
   header("HTTP/1.1 403 Forbidden");
   die("403 Forbidden");
+}
+
+if (isset($_POST["delete"]) and $_POST["delete"] == "delete") {
+  try {
+    $db -> deleteEntry(postParamValidate("id"), postParamValidate("password"));
+    header("Location: {$base_url}/");
+    die("Deleted.");
+  } catch(Exception $e) {
+    die($e -> getMessage());
+  }
 }
 
 $entry = array("id" => postParamValidate("id"), "login_name" => postParamValidate("login_name"), "title" => postParamValidate("title"), "class_id" => postParamValidate("class_id"), "kg_id" => postParamValidate("kg_id"), "grade_id" => postParamValidate("grade_id"), "password" => postParamValidate("password"));

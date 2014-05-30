@@ -67,6 +67,8 @@ endwhile;
           <label><span>予稿:</span>
             <input type="file" name="handout" accept="application/pdf" />
           </label>
+          <label><span>削除:</span>
+            <input type="checkbox" name="delete" value="delete" /></label>
           <label><span>編集パスワード:</span><input type="password" name="password" placeholder="登録時に作成したものを入力してください" required></label>
           <input type="submit" value="更新" />
         </form>

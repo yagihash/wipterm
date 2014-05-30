@@ -205,6 +205,22 @@ class DBinterface {
     }
   }
 
+  public function deleteEntry($entry_id, $password) {
+    $back = "<script src='./js/back.js'></script>";
+    $entry = $this -> fetchEntry($entry_id);
+
+    if ($this -> checkPasswd($entry_id, $password)) {
+      $q = "DELETE FROM entries WHERE id=?";
+      $stmt = $this -> db -> prepare($q);
+      $result = $stmt -> execute(array($entry_id));
+      unlink(__DIR__ . "/../files/slides/" . $entry["slide_name"]);
+      unlink(__DIR__ . "/../files/handouts/" . $entry["handout_name"]);
+      return $result;
+    } else {
+      throw new Exception("Wrong password.{$back}");
+    }
+  }
+
   public function putFile2Dir($tmp_file, $mode = 0) {
     $targets = array(__DIR__ . '/../files/slides/', __DIR__ . '/../files/handouts/');
     $target = $targets[$mode];
