@@ -20,6 +20,16 @@ class DBinterface {
   }
 
   public function fetchAllEntries() {
+    $q = "SELECT * FROM entries ORDER BY `order` ASC";
+    $stmt = $this -> db -> prepare($q);
+    $result = $stmt -> execute();
+    if ($result)
+      return $stmt;
+    else
+      return $result;
+  }
+
+  public function fetchClassedEntries() {
     $q = "SELECT * FROM entries ORDER BY class_id DESC";
     $stmt = $this -> db -> prepare($q);
     $result = $stmt -> execute();
@@ -66,7 +76,6 @@ class DBinterface {
     return false;
   }
 
-  // $entry = {"login_name", "kg_id", "title", "class_id", "grade_id", "handout_name", "slide_name", "password"}
   public function registerEntry($entry) {
     $back = "<script src='./js/back.js'></script>";
 
@@ -205,7 +214,7 @@ class DBinterface {
     }
   }
 
-  public function deleteEntry($entry_id, $password, $admin=false) {
+  public function deleteEntry($entry_id, $password, $admin = false) {
     $back = "<script src='./js/back.js'></script>";
     $entry = $this -> fetchEntry($entry_id);
 
@@ -338,6 +347,47 @@ class DBinterface {
       return $stmt;
     else
       return $result;
+  }
+
+  public function setOrder() {
+    $entries = $this -> fetchClassedEntries();
+    $q = "UPDATE entries SET `order`=? WHERE id=?";
+    $stmt = $this -> db -> prepare($q);
+    $i = 1;
+    while ($row = $entries -> fetch()) {
+      $stmt -> execute(array($i, $row["id"]));
+      $i++;
+    }
+  }
+
+  public function changeOrder($entry_id, $dest) {
+    $q = "UPDATE entries SET `order`=? WHERE id=?";
+    $stmt = $this -> db -> prepare($q);
+    $entries = $this -> fetchAllEntries();
+    $i = 1;
+    while ($row = $entries -> fetch()) {
+      if ($i >= $dest) {
+        $stmt -> execute(array($i + 1, $row["id"]));
+      }
+      $i++;
+    }
+    $stmt -> execute(array($dest, $entry_id));
+    $entries = $this -> fetchAllEntries();
+    $i = 1;
+    while ($row = $entries -> fetch()) {
+      if ($row["id"] != $entry_id) {
+        $stmt -> execute(array($i, $row["id"]));
+        $i++;
+      }
+    }
+  }
+
+  public function countEntries() {
+    $q = "SELECT count(*) FROM entries";
+    $stmt = $this -> db -> prepare($q);
+    $stmt -> execute();
+    $row = $stmt -> fetch();
+    return $row[0];
   }
 
 }

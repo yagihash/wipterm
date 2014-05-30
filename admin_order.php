@@ -8,20 +8,25 @@ if (!$isAuthed) {
   die("403 Forbidden");
 }
 
+$db = new DBinterface("./database.db");
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+  header("HTTP/1.1 403 Forbidden");
+  die("403 Forbidden");
+}
+
 if ($_POST["token"] !== $_SESSION["token"]) {
   header("HTTP/1.1 403 Forbidden");
   die("403 Forbidden");
 }
 
-$db = new DBinterface("./database.db");
-
 $entry_id = postParamValidate("entry_id");
-try {
-  if ($entry_id) {
-    $db -> deleteEntry($entry_id, "", true);
-  }
-} catch(Exception $e) {
-  die($e -> getMessage());
+$dest = postParamValidate("dest");
+
+if($entry_id and $dest) {
+  $db -> changeOrder($entry_id, $dest);
+} else {
+  die("Invalid params.<script src='./js/back.js'></script>");
 }
 
 header("Location: {$base_url}/admin.php");
