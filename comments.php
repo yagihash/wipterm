@@ -23,7 +23,7 @@ $entry = $db -> fetchEntry($_GET["id"]);
       require_once (__DIR__ . "/page_header.php");
 ?>
       <div id="main" class="content">
-        <h2>評価/コメントページ</h2>
+        <h2><?=escapeHTML($entry["login_name"]) ?>への評価/コメントページ</h2>
         <form class="register" method="POST" action="comments_post.php">
           <input type="hidden" name="token" value="<?=escapeHTML($_SESSION["token"]) ?>" />
           <input type="hidden" name="entry_id" value="<?=escapeHTML($entry["id"]) ?>" />
